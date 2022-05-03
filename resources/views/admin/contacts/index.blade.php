@@ -16,6 +16,7 @@
                             <div class="col-md-12">
                                 <!-- DATA TABLE-->
                                 <div class="table-responsive m-b-40">
+                                    <a href="/gallery/tambah" class="btn btn-primary mb-3">Create new contact</a>
                                     <table class="table table-borderless table-data3">
                                         <thead>
                                             <tr>

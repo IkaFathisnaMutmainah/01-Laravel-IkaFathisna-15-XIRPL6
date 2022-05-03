@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,4 +57,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
     Route::post('/contacts/{id}/update', [ContactController::class, 'update'])->name('contacts.update');
     Route::get('/contacts/{id}/destroy', [ContactController::class, 'destroy'])->name('contacts.destroy');
+
+
+/*Route::resource('gallery', GalleryController::class);*/
+Route::get('/galleries/tambah', [GalleryController::class, 'tambah'])->name('galleries.tambah');
+Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
+Route::post('/gallery/store', [GalleryController::class, 'store'])->name('gallery.store');
+
 });

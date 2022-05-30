@@ -11,20 +11,17 @@
                                         <strong>Form Edit</strong> Gallery
                                     </div>
                                     <div class="card-body card-block">
-                                        <form action="{{ route('admin.gallery.edit', $gallery->id)}}" method="post" class="">
+                                        <form action="{{ route('gallery.update', $gallery->id)}}" method="post" class="">
                                             {{ csrf_field() }}
                                             <div class="form-group">
                                                 <label for="nf-email" class=" form-control-label">Judul</label>
-                                                <input type="text" name="nama" class="form-control" value="{{ $gallery->judul}}">
+                                                <input type="text" name="judul" class="form-control" value="{{ $gallery->judul}}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="nf-email" class=" form-control-label">Deskripsi</label>
                                                 <input type="description" name="deskripsi" class="form-control" value="{{ $gallery->deskripsi}}">
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="formFile" class="form-label">Upload Image</label>
-                                                <input class="form-control" type="file" id="formFile" value="{{ $gallery->gambar }}">
-                                            </div>
+                                            
                                             <div class="card-footer">
                                         <button type="submit" class="btn btn-primary btn-sm">
                                             <i class="fa fa-dot-circle-o"></i> Ubah

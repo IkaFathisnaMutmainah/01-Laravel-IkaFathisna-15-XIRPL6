@@ -33,7 +33,7 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('gallery', [GalleryController::class, 'index']);
+Route::get('gallery', [GalleryController::class, 'tampil']);
 
 Route::get('/contacts', function () {
     return view ('contacts', [
@@ -54,15 +54,15 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/contacts/index', [ContactController::class, 'index'])->name('contacts.index');
 Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
-Route::get('/contacts/{id}/update', [ContactController::class, 'update'])->name('contacts.update');
+Route::post('/contacts/{id}/update', [ContactController::class, 'update'])->name('contacts.update');
 Route::get('/contacts/{id}/destroy', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
 
-/*Route::resource('gallery', GalleryController::class);*/
+//Route::resource('gallery', GalleryController::class);
 Route::get('/gallery/tambah', [GalleryController::class, 'tambah'])->name('gallery.tambah');
 Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
 Route::post('/gallery/store', [GalleryController::class, 'store'])->name('gallery.store');
 Route::get('/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
-Route::get('/gallery/{id}/update', [GalleryController::class, 'update'])->name('gallery.update');
+Route::post('/gallery/{id}/update', [GalleryController::class, 'update'])->name('gallery.update');
 Route::get('/gallery/{id}/destroy', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 });

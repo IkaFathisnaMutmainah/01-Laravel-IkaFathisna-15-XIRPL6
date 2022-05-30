@@ -1,4 +1,3 @@
-
 @extends('layouts.main')
 
 @section('container')
@@ -32,10 +31,10 @@
                                         <tbody>
                                             @foreach ($galeri as $tampil => $gallery)
                                             <tr>
-                                                <td>{{ $gallery + 1 }}</td>
+                                                <td>{{ 1 }}</td>
                                                 <td>{{ $gallery->judul}}</td>
                                                 <td>{{ $gallery->deskripsi}}</td>
-                                                <td>{{ $gallery->gambar}}</td>
+                                                <td><img src="{{ asset('storage/public/admin/galleries/'. $gallery->gambar )}}" class="rounded" style="width: 150px" alt="" srcset=""></td>
                                                
                                                 
                                             </tr>
@@ -44,7 +43,7 @@
                                            
                                         </tbody>
                                     </table>
-                                    {{ $galleries->links()}}
+                                    {{ $galeri->links()}}
                                 </div>
                                 <!-- END DATA TABLE-->
                             </div>
@@ -52,7 +51,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -60,4 +59,3 @@
                 </div>
             </div>
 @endsection
-

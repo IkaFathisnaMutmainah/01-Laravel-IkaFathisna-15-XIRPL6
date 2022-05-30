@@ -97,6 +97,7 @@ class GalleryController extends Controller
     public function tampil()
     {
         $galeri = Gallery::paginate(5);
-        return view('gallery', compact('galeri'));
+        $title = "gallery";
+        return view('gallery', compact('galeri', 'title'));
     }
 }

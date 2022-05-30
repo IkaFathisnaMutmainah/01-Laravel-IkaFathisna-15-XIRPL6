@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
+use App\Models\Gallery;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +33,7 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/gallery', function () {
-    return view ('gallery', [
-        "title" => "Gallery"
-    ]);
-});
+Route::get('gallery', [GalleryController::class, 'index']);
 
 Route::get('/contacts', function () {
     return view ('contacts', [
@@ -47,21 +44,25 @@ Route::get('/contacts', function () {
 //Route::resource('/contacts', ContactController::class);
 Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
 Route::post('/contacts/store', [ContactController::class, 'store'])->name('contacts.store');
-    
+Route::get('/gallery/index', [GalleryController::class, 'index'])->name('gallery.index');
+Route::get('/gallery/tampil', [GalleryController::class, 'tampil'])->name('gallery.create');
+
 
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/contacts/index', [ContactController::class, 'index'])->name('contacts.index');
-    Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
-    Route::post('/contacts/{id}/update', [ContactController::class, 'update'])->name('contacts.update');
-    Route::get('/contacts/{id}/destroy', [ContactController::class, 'destroy'])->name('contacts.destroy');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/contacts/index', [ContactController::class, 'index'])->name('contacts.index');
+Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
+Route::get('/contacts/{id}/update', [ContactController::class, 'update'])->name('contacts.update');
+Route::get('/contacts/{id}/destroy', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
 
 /*Route::resource('gallery', GalleryController::class);*/
-Route::get('/galleries/tambah', [GalleryController::class, 'tambah'])->name('galleries.tambah');
+Route::get('/gallery/tambah', [GalleryController::class, 'tambah'])->name('gallery.tambah');
 Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
 Route::post('/gallery/store', [GalleryController::class, 'store'])->name('gallery.store');
-
+Route::get('/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
+Route::get('/gallery/{id}/update', [GalleryController::class, 'update'])->name('gallery.update');
+Route::get('/gallery/{id}/destroy', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 });

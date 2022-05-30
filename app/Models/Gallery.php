@@ -10,4 +10,7 @@ class Gallery extends Model
     protected $table = 'galleries';
     protected $primarykey = 'id' ;
     protected $fillable = ['id', 'judul', 'deskripsi', 'gambar'];
+
+    
 }
+

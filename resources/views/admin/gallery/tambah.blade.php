@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,18 +31,16 @@
                             <tbody>
                               @forelse ($galleries as $gallery)
                                 <tr>
-                                    <td class="text-center">
-                                        <img src="{{ Storage::url('public/galleries/').$gallery->images }}" class="rounded" style="width: 150px">
-                                    </td>
+                                   
                                     <td>{{ $gallery->judul }}</td>
                                     <td>{!! $gallery->deskripsi !!}</td>
                                     <td class="text-center">
-                                        <form onsubmit="return confirm('Yakin ingin menghapus data ini ?');" action="{{ route('gallery.destroy', $gallery->id) }}" method="POST">
-                                            <a href="{{ route('gallery.edit', $gallery->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
-                                        </form>
+                                        <img src="{{ asset('storage/public/admin/galleries/'. $gallery->gambar )}}" class="rounded" style="width: 150px">
+                                    </td>
+                                    <td class="text-center">
+                                            
+                                        <a href="{{ route('admin.gallery.edit', $gallery->id)}}"><i class="fas fa-edit">Edit</i></a>
+                                        <a href="{{ route('gallery.destroy', $gallery->id)}}"><i class="fas fa-trash" style="color:red">Hapus</i></a>
                                     </td>
                                 </tr>
                               @empty
@@ -50,7 +50,7 @@
                               @endforelse
                             </tbody>
                           </table>  
-                          {{ $galleries->links() }}
+                          
                     </div>
                 </div>
             </div>

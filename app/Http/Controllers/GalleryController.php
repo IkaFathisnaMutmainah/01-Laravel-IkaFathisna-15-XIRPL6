@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class GalleryController extends Controller
 {
@@ -15,8 +16,10 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries = Gallery::latest()->paginate(5);
-        return view('gallery.tambah', compact('galleries'));
+        return view('gallery', [
+            "title" => "Gallery"
+        ]);
+       
     }
 
     /**
@@ -44,8 +47,8 @@ class GalleryController extends Controller
         ]);
 
         //script untuk upload gambar
-        $image = $request->file('image');
-        $image->storeAs('public/galleries', $image->hashName());
+        $image = $request->file('gambar');
+        $image->storeAs('public/admin/galleries', $image->hashName());
 
         $gallery = Gallery::create([
             'judul'     => $request->judul,
@@ -55,15 +58,45 @@ class GalleryController extends Controller
 
         if($gallery){
             //pesan ketika gambar berhasil di upload
-            return redirect()->route('admin.gallery.tambah')->with(['success' => 'Data Berhasil Ditambahkan:D']);
+            return redirect('/gallery/tambah')->with(['success' => 'Data Berhasil Ditambahkan:D']);
         }else{
             //pesan ketika gambar gagal dikirim
-            return redirect()->route('admin.gallery.tambah')->with(['error' => 'Data Gagal di Ditambahkan']);
+            return redirect('/gallery/tambah')->with(['error' => 'Data Gagal di Ditambahkan']);
         }
     }
     public function tambah()
     {
-        $galleries = Gallery::latest()->paginate(5);
+        $galleries =  DB::table('galleries')->get();
+        $galleries = Gallery::paginate(5);
         return view('admin.gallery.tambah', compact('galleries'));
+    }
+
+    public function edit($id)
+    {
+        $gallery = Gallery::findOrFail($id);
+        return view('admin/gallery/edit', compact('gallery'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $gallery = Gallery::findOrFail($id);
+        $gallery->update($request->all());
+        $gallery->save();
+
+        return redirect()->route('gallery.tambah');
+    }
+
+    public function destroy($id)
+    {
+        $gallery = Gallery::findOrFail($id);
+        $gallery->delete();
+
+        return redirect()->route('gallery.tambah');
+    }
+
+    public function tampil()
+    {
+        $galeri = Gallery::paginate(5);
+        return view('gallery', compact('galeri'));
     }
 }

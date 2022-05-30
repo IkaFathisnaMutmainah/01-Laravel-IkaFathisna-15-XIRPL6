@@ -37,8 +37,8 @@
                                 <i class="fa fa-picture-o"></i>Gallery</a>
                         </li>
                         <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
+                            <a href="{{ route ('gallery.tambah')}}">
+                                <i class="far fa-check-square"></i>View Gallery</a>
                         </li>
                         <li>
                             <a href="calendar.html">

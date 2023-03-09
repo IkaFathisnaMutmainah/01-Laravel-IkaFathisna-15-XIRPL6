@@ -1,26 +1,4 @@
-@extends('layouts.app')
-@section('title', 'Ika Fathisna | Dashboard')
-@section('content')
-<div class="main-content">
-                <div class="section_content section_content--p30">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="overview-wrap">
-                                    <h2 class="title-1">overview</h2>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+@extends('layouts.main')
+@section('container')
+    <h2>Buku Perpustakaan</h2>
 @endsection

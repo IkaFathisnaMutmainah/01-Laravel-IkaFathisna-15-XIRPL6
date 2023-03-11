@@ -47,7 +47,7 @@
                                     <input class="au-input au-input--full" type="password" name="password_confirmation" placeholder="Password">
                                 </div>
                                 
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+                                <button class="au-btn au-btn--block au-btn--blue m-b-20" type="submit">Register</button>
                                 
                             </form>
                             <div class="register-link">

@@ -20,10 +20,10 @@ class BukuController extends Controller
      */
     public function index(Request $request){
         if($request->has('search')){
-            $bukus = Buku::where('judul_buku', 'LIKE', '%' .$request->search. '%')->paginate(5);
+            $bukus = Buku::where('judul_buku', 'LIKE', '%' .$request->search. '%')->paginate(10);
             
         }else{
-            $bukus = Buku::paginate(5);
+            $bukus = Buku::paginate(10);
         }
         return view('admin/buku/index', compact('bukus'));
     }  
@@ -56,7 +56,7 @@ class BukuController extends Controller
     public function tambah()
     {
         $bukus =  DB::table('bukus')->get();
-        $bukus = Buku::paginate(5);
+        $bukus = Buku::paginate(10);
         return view('admin.buku.tambah', compact('buku'));
     }
 
@@ -137,7 +137,7 @@ class BukuController extends Controller
               // halaman_url manggil mana ya
           }else {
               
-              $bukus = Buku::paginate(5);
+              $bukus = Buku::paginate(10);
               Session::put('halaman_url',request()->fullUrl());
           }
   

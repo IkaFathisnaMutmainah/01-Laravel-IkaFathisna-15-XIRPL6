@@ -1,6 +1,14 @@
 @extends('layout_user.navbar')
 @section('content')
-<div class="container mt-4">
+<style>
+body {
+    background: #F5E9CF;
+    color: #111111;
+    background-size: 200% 200%;
+    /* animation: shining 6s ease-in-out infinite; */
+}
+</style>
+<div class="container mt-4" >
      
        <div class="card border-secondary mb-3" style="max-width: 30rem;">
               <div class="card-header">DETAIL BUKU</div>

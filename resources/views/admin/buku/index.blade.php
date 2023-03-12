@@ -59,10 +59,18 @@
                                                 </td>
                                                 
                                             </tr>
+                                            
+
                                             @endforeach
                                             
                                            
                                         </tbody>
+                                        @if(session('success'))
+                                                <div class="alert alert-success" role="alert">
+                                                    {{session('success')}}
+                                                </div>
+                                                
+                                        @endif
                                     </table>
                                     {{ $bukus->links()}}
                                 </div>

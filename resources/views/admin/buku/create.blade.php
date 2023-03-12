@@ -15,31 +15,25 @@
                                             {{ csrf_field() }}
                                             <div class="form-group">
                                                 <label for="nf-email" class=" form-control-label">Judul Buku</label>
-                                                <input type="text" name="judul_buku" class="form-control" >
+                                                <input type="text" name="judul_buku" class="form-control" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="nf-email" class=" form-control-label">Nama Pengarang</label>
-                                                <input type="text" name="nama_pengarang" class="form-control" >
+                                                <input type="text" name="nama_pengarang" class="form-control" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="nf-email" class=" form-control-label">Penerbit</label>
-                                                <input type="text" name="penerbit" class="form-control" >
+                                                <input type="text" name="penerbit" class="form-control" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="nf-email" class=" form-control-label">Tahun Terbit</label>
-                                                <input type="date" name="tahun_terbit" class="form-control" >
+                                                <input type="date" name="tahun_terbit" class="form-control" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="nf-image">GAMBAR</label>
-                                                <input type="file" class="form-control @error('gambar') is-invalid @enderror" name="gambar" accept=".png, .jpeg, .jpg">
+                                                <label for="nf-image">Gambar</label>
+                                                <input type="file" class="form-control @error('gambar') is-invalid @enderror" name="gambar" accept=".png, .jpeg, .jpg" required>
                             
                                                 <!-- pesan error untuk gambar -->
-                                                @error('gambar')
-                                                <div class="alert alert-danger mt-2">
-                                                     {{ $message }}
-                                                </div>
-                                                @enderror
-                                                </div>
                                             
                                             <div class="card-footer">
                                         <button type="submit" class="btn btn-primary btn-sm">

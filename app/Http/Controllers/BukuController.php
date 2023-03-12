@@ -51,7 +51,7 @@ class BukuController extends Controller
         $bukus = $request->all();
         $bukus['gambar'] = $request->file('gambar')->store('gambarbuku', 'public');
         Buku::create($bukus);
-        return redirect()->route('bukus.index');
+        return redirect()->route('bukus.index')->with('success','Data buku berhasil ditambahkan!');
     }
     public function tambah()
     {
